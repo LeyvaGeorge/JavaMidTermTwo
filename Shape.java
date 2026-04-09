@@ -6,13 +6,15 @@ abstract class Shape {
 
     public static void main (String[] args) {
 
-        //Creating a sphere object and printing the surface area and volume
-        Sphere sphere1 = new Sphere();
-        System.out.println(sphere1.toString());
+        //Creating objects for each class and printing the surface area and volume
+        Sphere sphere = new Sphere(5.0);
+        System.out.println(sphere.toString());
 
-        //Creating a cylinder object and printing the surface area and volume
-        Cylinder cylinder1 = new Cylinder();
-        System.out.println(cylinder1.toString());
+        Cylinder cylinder = new Cylinder(2.0, 3.0);
+        System.out.println(cylinder.toString());
+
+        Cone cone = new Cone(2.0, 3.0);
+        System.out.println(cone.toString());
 
     }
 
@@ -81,3 +83,38 @@ class Cylinder extends Shape {
         return "The Cylinder surface area is: " + surface_area() + " and the volume is: " + volume();       
     }
 }
+
+//Part III creating a class for Cone that extends the shape class
+class Cone extends Shape {
+    double radius;
+    double height;
+    //Constructors
+    public Cone() {
+        this.radius = 2.0;
+        this.height = 3.0;
+    }
+    public Cone(double radius, double height) {
+        this.radius = radius;
+        this.height = height;
+    }
+    
+    //Overriding the surface area and volume methods
+    @Override
+    public double surface_area() {
+        double area;
+        area = Math.PI * radius * (radius + Math.sqrt(Math.pow(height, 2.0) + Math.pow(radius, 2.0)));
+        return area;
+    }
+    @Override
+    public double volume() {
+        double volume;
+        volume = Math.PI * Math.pow(radius, 2.0) * height / 3.0;
+        return volume;
+    }
+
+    //Printing the surface area and volume of the cone
+    public String toString() { 
+        return "The Cone surface area is: " + surface_area() + " and the volume is: " + volume();       
+    }
+}
+
