@@ -132,7 +132,7 @@ class ShapeArray {
 
     //Method to print the surface area and volume of each shape in the array
     public void printShapes() {
-        for (Shape shape : shapeArray) {
+        for (Shape shape : shapeArray) {        //For each shape in the array, print the surface area and volume using the toString method
             System.out.println(shape.toString());
         }
     }
