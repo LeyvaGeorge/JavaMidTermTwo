@@ -5,13 +5,15 @@ abstract class Shape {
     public abstract double volume();
 
     public static void main (String[] args) {
-        Sphere sphere1 = new Sphere();
-        System.out.println("Surface Area of Sphere with radius 5.0: " + sphere1.surface_area());
-        System.out.println("Volume of Sphere with radius 5.0: " + sphere1.volume());
 
-        Sphere sphere2 = new Sphere(3.0);
-        System.out.println("Surface Area of Sphere with radius 3.0: " + sphere2.surface_area());
-        System.out.println("Volume of Sphere with radius 3.0: " + sphere2.volume());
+        //Creating a sphere object and printing the surface area and volume
+        Sphere sphere1 = new Sphere();
+        System.out.println(sphere1.toString());
+
+        //Creating a cylinder object and printing the surface area and volume
+        Cylinder cylinder1 = new Cylinder();
+        System.out.println(cylinder1.toString());
+
     }
 
 }
@@ -28,15 +30,54 @@ class Sphere extends Shape {
         this.radius = radius;
     }
 
+    //Overriding the surface area and volume methods
     public double surface_area() {
         double area;
         area = 4 * Math.PI * Math.pow(radius, 2.0);
         return area;
     }
-
     public double volume() {
         double volume;
         volume = (4.0/3.0) * Math.PI * Math.pow(radius, 3.0);
         return volume;
+    }
+
+    //Printing the surface area and volume of the sphere
+    public String toString() { 
+        return "The Sphere surface area is: " + surface_area() + " and the volume is: " + volume();       
+    }
+}
+
+//Part II creating a class for Cylinder that extends the shape class
+class Cylinder extends Shape {
+    double radius;
+    double height;
+    //Constructors
+    public Cylinder() {
+        this.radius = 2.0;
+        this.height = 3.0;
+    }
+    public Cylinder(double radius, double height) {
+        this.radius = radius;
+        this.height = height;
+    }
+    
+    //Overriding the surface area and volume methods
+    @Override
+    public double surface_area() {
+        double area;
+        area = 2 * Math.PI * radius * height + 2 * Math.PI * Math.pow(radius, 2.0);
+        return area;
+    }
+    @Override
+    public double volume() {
+        double volume;
+        volume = Math.PI * Math.pow(radius, 2.0) * height;
+        return volume;
+    }
+
+    //Printing the surface area and volume of the cylinder
+    public String toString() { 
+        return "The Cylinder surface area is: " + surface_area() + " and the volume is: " + volume();       
     }
 }
