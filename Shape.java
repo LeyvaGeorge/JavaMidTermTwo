@@ -6,15 +6,9 @@ abstract class Shape {
 
     public static void main (String[] args) {
 
-        //Creating objects for each class and printing the surface area and volume
-        Sphere sphere = new Sphere(5.0);
-        System.out.println(sphere.toString());
-
-        Cylinder cylinder = new Cylinder(2.0, 3.0);
-        System.out.println(cylinder.toString());
-
-        Cone cone = new Cone(2.0, 3.0);
-        System.out.println(cone.toString());
+        //Creating an instance of the ShapeArray class and calling the printShapes method to print the surface area and volume of each shape in the array
+        ShapeArray shapes = new ShapeArray();
+        shapes.printShapes();
 
     }
 
@@ -118,3 +112,28 @@ class Cone extends Shape {
     }
 }
 
+//Part IV creating a class ShapeArray that contains an array of shape objects and a method to print the surface area and volume of each shape in the array
+class ShapeArray {
+    //Array of shape objects
+    Shape[] shapeArray = new Shape[3];
+    //Instatiate the array with 3 objects of each class
+    Sphere ball = new Sphere(5.0);
+    Cylinder can = new Cylinder(2.0, 3.0);
+    Cone funnel = new Cone(2.0, 3.0);
+
+    //Constructor
+    public ShapeArray() {
+        this.shapeArray = new Shape[3];
+        this.shapeArray[0] = this.ball;
+        this.shapeArray[1] = this.can;
+        this.shapeArray[2] = this.funnel;
+    }
+
+
+    //Method to print the surface area and volume of each shape in the array
+    public void printShapes() {
+        for (Shape shape : shapeArray) {
+            System.out.println(shape.toString());
+        }
+    }
+}
